@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="./index.css">
+    <script src="./bower_components/angular/angular.min.js"></script>
+    <script src="./scripts/module/app.js"></script>
+    <script src="./scripts/controllers/maincontroller.js"></script>
+    <script src="./models/studentmodel.js"></script>
+    
+    <title>Angular JS | CRUD</title>
+</head>
+<body ng-app="myapp">
+    <div ng-controller="maincontroller" >
+        <div class="details jumbotron container">
+                <h1>Angular JS CRUD</h1>
+                <hr>
+                <div class="row container">
+                        <div class="col-md-4 col-sm-12">
+                            <input type="text" ng-model="id" placeholder="Type ID">
+            
+            
+                        </div>
+                        <div class="col-md-4 col-sm-12">
+                                <input type="text" ng-model="name" placeholder="Type name">
+                            </div>
+                            <div class="col-md-4 col-sm-12">
+                                    <input type="text" ng-model="branch" placeholder="Type branch">
+                                </div>
+                    </div>
+        </div>
+        <div class="buttons container">
+                <div class="row container">
+                        <div class="col-md-7 col-sm-12">
+                           <button class="btn btn-primary" ng-click="add()">Add</button>
+                           <button class="btn btn-danger" ng-click="delete()">Delete</button>
+                           <button class="btn btn-success" ng-click="update()">Update</button>
+            
+                        </div>
+                        <div class="col-md-5 col-sm-12">
+                            
+                                <input type="text" ng-model="search" placeholder="Search for any record..."> 
+                            </div>
+                            
+                    </div>
+        </div>
+        <div class="table">
+            <div class="container">
+            
+                    <table class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Branch</th>
+                                    <th>Operations</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr  ng-class="{'table-danger':item.marked}"  ng-repeat = "item in array|filter:search" class="tableCrud">
+                                    <td>{{item.id}}</td>
+                                    <td>{{item.name|uppercase}}</td>
+                                    <td>{{item.branch|uppercase}}</td>
+                                    <td>
+                                        <button  ng-click="markdelete(item.id)">
+                                            <span  class="btn btn danger fa fa-trash text-danger"></span>
+                                        </button>
+                                        <button  ng-click="markupdate(item.id)">
+                                            <span  class="btn fa fa-pencil text-primary"></span>
+                                        </button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+            </div>
+        </div>
+      
+
+    </div>
+
+    
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>    
+</body>
+</html>
